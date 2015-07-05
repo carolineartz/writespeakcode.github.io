@@ -136,6 +136,8 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+set :partials_dir, 'partials'
+
 #Bower support
 sprockets.append_path File.join root, 'bower_components'
 sprockets.import_asset 'jquery'
