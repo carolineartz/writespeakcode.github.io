@@ -32,10 +32,12 @@
 # Helpers
 require 'lib/conference_helper'
 require 'lib/blog_helper'
+require 'lib/icon_helper'
 
 helpers do
   include ConferenceHelper
   include BlogHelper
+  include IconHelper
 
   # sponsors
   def sponsor_levels

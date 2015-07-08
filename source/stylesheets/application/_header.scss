@@ -4,11 +4,11 @@ $color2: #ffac81;
 $color3: #30343f;
 $color4: #d9d0de; 
 $color5: #fafaff;
+$color6: #333335;
 
-@import 'variables';
   $navigation-padding: 1em;
-  $navigation-background: $color3;
-  $navigation-color: $color5;
+  $navigation-background: $white;
+  $navigation-color: $medium-gray;
   $navigation-color-hover: $color2;
   $navigation-height: 60px;
   $navigation-search-background: lighten($navigation-background, 5);
@@ -48,12 +48,12 @@ $L:     1024px;
 
 // $color-1: #33414a; // Limed Spruce
 $color-1: $navigation-background;
-$color-2: #7e4d7e; // Strikemaster
+$color-2: lighten($navigation-background, 10%);
 $color-3: #ffffff; // White
 
 // fonts 
 
-$primary-font: 'PT Sans', sans-serif;
+// $primary-font: 'PT Sans', sans-serif;
 
 /* -------------------------------- 
 
@@ -97,7 +97,9 @@ header {
 	top: 0;
 	left: 0;
 	background-color: $color-1;
+	font-family: $sans-serif;
 	@include font-smoothing;
+	color: $navigation-color;
 
 	/* Force Hardware Acceleration */
 	@include transform(translateZ(0));
@@ -149,7 +151,7 @@ header {
 		margin-left: 5%;
 
 		img {
-			margin-top: 29px;
+			// margin-top: 29px;
 		}
 	}
 }
@@ -239,7 +241,7 @@ header {
 		font-size: 1.8rem;
 		padding: .9em 2em .9em 1em;
 		border-bottom: 1px solid $color-1;
-		color: $color-3;
+		color: $navigation-color;
 		@include transition(transform .3s, opacity .3s);
 	}
 
@@ -332,8 +334,8 @@ header {
 
 		li a {
 			display: inline-block;
-			padding: .8em;
-			line-height: 1;
+			padding: .6em;
+			line-height: 1rem;
 			font-size: 1.6rem;
 			border-bottom: none;
 			
@@ -481,7 +483,7 @@ header {
 }
 
 .no-js .logo img {
-	margin-bottom: 14px;
+	// margin-bottom: 14px;
 }
 
 .no-js .main-nav {

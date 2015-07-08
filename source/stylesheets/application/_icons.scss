@@ -99,3 +99,40 @@ h1.icon {
     }
   }
 }
+
+
+// [class^="wsc-"], [class*=" wsc-"] {
+//     height: 32px;
+//     width: 32px;
+//     display: inline-block;
+//     fill: currentColor;
+// }
+
+// 33% more;
+// 50% of whatever that is 
+svg.wsc-speak3, 
+.wsc-speak-solid,
+svg.wsc-code,
+.wsc-code-solid {
+    padding: 0 10px 25px;
+    height: 175px;
+    @include media($medium-screen) {
+       padding-bottom: 50px;
+    margin-bottom: 25px;
+    height: 300px;
+    }
+   
+    
+}
+
+svg.wsc-write, .wsc-write-solid {
+    height: 200px;
+    margin: 30px 0;
+    padding: 0 10px;
+    @include media($medium-screen) {
+      height: 400px;
+      margin: 20px 0;
+    }
+    
+    
+}

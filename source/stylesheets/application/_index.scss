@@ -1,117 +1,149 @@
+$extra-large: new-breakpoint(min-width em(960));
+$banner-breakpoint: new-breakpoint(min-width 505px);
+
 .index {
   .navigation {
     background-color: transparent;
     text-align: center;
     border: 0;
-
     position: absolute;
     top: 0;
-
-    .logo, .navigation-tools { display: none; }
-
+    .logo, .navigation-tools {
+      display: none;
+    }
     nav {
       float: none;
     }
   }
-
   #main {
     padding: 0;
-
-    h1 { color: $white; }
+    h1 {
+      color: $white;
+    }
   }
-
   .banner {
     margin: 0;
     position: relative;
     min-height: 600px;
     color: $white;
     text-align: center;
-
     .wrap {
       @include outer-container;
-
       overflow: hidden;
       text-align: center;
-
       height: auto;
-
       @include media($large-screen) {
         height: 100%;
       }
     }
-
     .copy-wrap {
       text-align: center;
       color: $white;
-      a:not(.button) { @include colored-link($white); }
-
+      a:not(.button) {
+        @include colored-link($white);
+      }
       h1 {
         font-size: 3em;
       }
     }
-
-    border-bottom: 10px solid $brand-primary-dark;
+    .row-wrap {
+      @include row;
+    }
   }
-
   #banner {
-    background-image: url(image_path('2013-conf/wsc-sign.jpg'));
+    background-image: url(image_path("2013-conf/wsc-sign.jpg"));
     background-repeat: no-repeat;
     background-size: cover;
-
-
+    z-index: -32;
+    background-blend-mode: multiply;
     .overlay {
       @include position(absolute, 0px 0px 0px 0px);
       display: block;
-      background-color: transparentize($brand-primary-dark, .4);
+      background-color: transparentize(lighten($brand-primary, 0.2), 0.3);
+      z-index: -33;
     }
-
     .copy-wrap {
       @include span-columns(12);
-
-      position: relative;
+      // position: relative;
       top: auto;
-      margin-top: 5em;
-
-      @include media($large-screen) {
-        @include span-columns(7);
-
-        margin-top: 8em;
+      margin-top: 9em;
+      padding: 20px;
+      @include media($extra-large) {
+        @include span-columns(8);
+        // margin-top: 8em;
         top: 50%;
       }
 
-      h1, h2 {
-        text-shadow: 1px 1px 2px $dark-gray;
-      }
+      h1 {
+        font-size: $lg-h1-font-size;
+        line-height: $sm-line-height;
+        @include media($large-screen) {
+          > span {
+            display: block;
+            white-space: pre;
+          }
+        }
 
+        // text-shadow: 1px 1px 2px $dark-gray;
+     
+      }
+      h2 {
+        font-size: $lg-h2-font-size;
+        line-height: $sm-line-height;
+        display: inline-block;
+        position: relative;
+        > span {
+          // display: block;
+       
+        }
+      }
+      // h2, span {
+      //   display: inline-block;
+      // }
+      .ampersand-container {
+        position: relative;
+      }
+      .wsc-ampersand {
+        width: 20px;
+        position: absolute;
+        right: 200px;
+        top: -40px;
+        @include media($banner-breakpoint) {
+          top: 190px;
+        }
+      }
       p {
         font-size: 1.3em;
-        padding-top: 2em;
-        text-shadow: 1px 1px 1px $dark-gray;
+        padding: 2em 1em;
+        // text-shadow: 1px 1px 1px $dark-gray;
+     
+      }
+      .wsc-ampersand::before {
+        font-size: 3.5em;
+        color: #E6B4B8;
+        // z-index: -20;
+        bottom: 50px;
+        right: 140px;
+        mix-blend-mode: overlay;
+        @include media($banner-breakpoint) {
+          position: absolute;
+        }
       }
     }
-
-     .fa-caret-down {
-       @include media($large-screen) {
+    .fa-caret-down {
+      @include media($large-screen) {
         @include span-columns(7);
         /*bottom: -25px;*/
-       }
-     }
-
-  }
-
-  #banner2 {
-    background-color: $brand-accent;
-    border-bottom-color: $brand-accent-dark;
-
-    .wrap {
+      }
     }
-
+  }
+  #banner2 {
+    background-color: $white;
     .image-wrap {
       max-width: 100%;
       max-height: 590px;
       margin: 0;
       padding: 0;
-
       @include media($large-screen) {
         float: left;
         max-width: 32%;
@@ -121,25 +153,79 @@
         max-height: 590px;
       }
     }
-
     .copy-wrap {
-      @include span-columns(12);
-
-      padding: 1em;
+      @include span-columns(10);
+      @include shift(1);
+      padding: 1em 1em 0;
       height: auto;
-
-      h1 { font-size: $sm-h1-font-size; }
-      h2 { font-size: $sm-h2-font-size; }
-      h2, h3 { text-align: center; }
-
-      p, h3 {
-        padding: .5em 0 0 0;
+      h1 {
+        font-size: $sm-h1-font-size;
       }
-
-      .header-break { display: none; }
-
+      // h2 { font-size: $sm-h2-font-size; }
+      h2, h3 {
+        text-align: center;
+      }
+      h2 {
+        color: $dark-gray;
+      }
+      h3 {
+        color: $dark-gray;
+        padding: .5em 0 0 0;
+        span {
+          font-weight: 700;
+          white-space: pre;
+          font-size: 1.3em;
+        }
+      }
+      .header-break {
+        display: none;
+      }
       @include media($large-screen) {
-        .header-break { display: block; }
+        .header-break {
+          display: block;
+        }
+      }
+    }
+    .icons-wrap {
+      position: relative;
+      .icons {
+        @include row;
+        width: 100%;
+        svg {
+          // fill: transparentize($brand-primary, .75);
+          // fill: transparentize($brand-secondary, .75)
+          // fill: transparentize($brand-accent, .75)
+          fill: transparentize($brand-primary, 0.75);
+        }
+        &:not(.icons-shadow) {
+          position: absolute;
+          bottom: -2px;
+          width: 99%;
+          svg {
+            // fill: RGBA(169, 24, 97, 1);
+            // fill: $brand-secondary;
+            // fill: $brand-accent;
+            fill: $brand-primary;
+            // stroke: $brand-primary-dark;
+            // stroke-width: 1px;/
+          }
+        }
+      }
+    }
+  }
+  #banner3 {
+    background: $brand-secondary;
+    min-height: 0;
+    padding: em(30) 0;
+    .row-wrap {}
+    .copy-wrap {
+      h2 {
+        font-size: $lg-h2-font-size;
+        font-weight: normal;
+      }
+      @include media($medium-screen-up) {
+        @include span-columns(8 of 12);
+        @include shift(2);
       }
     }
   }

@@ -55,3 +55,13 @@ blockquote {
     color: $white;
   }
 }
+
+::-moz-selection {
+    background-color: $brand-primary;
+    color: white;
+}
+
+::selection {
+    background-color: $brand-primary;
+    color: white;
+}

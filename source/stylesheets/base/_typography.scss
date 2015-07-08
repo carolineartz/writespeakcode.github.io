@@ -1,46 +1,71 @@
-@import 'variables';
+@import "variables";
 
 @mixin display-font($style: regular) {
-  font-family: $header-font-family;
-
+  font-family: $heading-font-family;
   $weight: 500;
   @if $style == thin {
     $weight: 200;
-  } @else if $style == light {
+  }
+  @else if $style == light {
     $weight: 300;
-  } @else if $style == bold {
+  }
+  @else if $style == bold {
     $weight: 700;
-  } @else if $style == black {
+  }
+  @else if $style == black {
     $weight: 900;
   }
-
   font-weight: $weight;
   font-style: normal;
-
 }
 
-@mixin display-font-normal { @include display-font; }
+@mixin display-font-normal {
+  @include display-font;
+}
 
-@mixin display-font-bold { @include display-font('bold'); }
-@mixin display-font-boldest { @include display-font(black); }
+@mixin display-font-bold {
+  @include display-font("bold");
+}
 
-@mixin display-font-light { @include display_font('light'); }
-@mixin display-font-lightest { @include display-font('thin'); }
+@mixin display-font-boldest {
+  @include display-font(black);
+}
+
+@mixin display-font-light {
+  @include display_font("light");
+}
+
+@mixin display-font-lightest {
+  @include display-font("thin");
+}
 
 @mixin colored-link($color) {
   &, &:hover, &:visited {
     color: $color;
     text-decoration: none;
   }
-
   &:hover {
     color: darken($color, 20);
     text-decoration: underline;
   }
-
   &:active, &:focus {
     color: darken($color, 20);
     outline: none;
+  }
+}
+
+@mixin link($color, $text-hover-color: currentColor, $text-color: currentColor) {
+  box-shadow: $color 0px -5px 0px 0px inset;
+  color: $text-color;
+  text-decoration: none;
+  text-rendering: optimizeSpeed;
+  border-bottom: 3px solid $color;
+  display: inline-block;
+  line-height: .9;
+  transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1) 0s;
+  &:hover {
+    color: $text-hover-color;
+    background: $color none repeat scroll 0% 0% / auto padding-box border-box;
   }
 }
 
@@ -50,18 +75,16 @@
   padding-left: .5em;
 }
 
-
 body {
   -webkit-font-smoothing: antialiased;
   background-color: $base-background-color;
   color: $base-font-color;
   font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-size: $base-font-size * 1.25;
   line-height: $base-line-height;
-
-   @include media($large-screen) {
-      font-size: $base-font-size * 1.2;
-   }
+  @include media($large-screen) {
+    font-size: $base-font-size * 1.35;
+  }
 }
 
 h1,
@@ -74,28 +97,32 @@ h6 {
   line-height: $header-line-height;
   margin: 0;
   text-rendering: optimizeLegibility; // Fix the character spacing for headings
-
-  .fa { display: none; }
-  @include media($medium-screen) { .fa { display: inline; } }
+  .fa {
+    display: none;
+  }
+  @include media($medium-screen) {
+    .fa {
+      display: inline;
+    }
+  }
 }
 
-h1 { text-align: center }
+h1 {
+  text-align: center;
+}
 
 h1 {
   @include display-font-boldest;
   color: $brand-primary;
   font-size: $sm-h1-font-size;
-
   @include media($large-screen) {
     font-size: $h1-font-size;
   }
-
 }
 
 h2 {
   @include display-font-bold;
   font-size: $sm-h2-font-size;
-
   @include media($large-screen) {
     font-size: $h2-font-size;
   }
@@ -103,7 +130,6 @@ h2 {
 
 h3 {
   font-size: $sm-h3-font-size;
-
   @include media($large-screen) {
     font-size: $h3-font-size;
   }
@@ -111,7 +137,6 @@ h3 {
 
 h4 {
   font-size: $sm-h4-font-size;
-
   @include media($large-screen) {
     font-size: $h4-font-size;
   }
@@ -119,7 +144,6 @@ h4 {
 
 h5 {
   font-size: $sm-h5-font-size;
-
   @include media($large-screen) {
     font-size: $h5-font-size;
   }
@@ -134,17 +158,16 @@ p {
 }
 
 a {
-  @include transition(color 0.1s linear);
-  @include colored-link($base-link-color);
-
-  &:hover {
-    color: $hover-link-color;
+  #main & {
+    @include link(lighten($base-link-color, 20%), $base-font-color);
   }
-
-  &:active, &:focus {
-    color: $hover-link-color;
-    outline: none;
-  }
+  // &:hover {
+  //   color: $hover-link-color;
+  // }
+  // &:active, &:focus {
+  //   color: $hover-link-color;
+  //   outline: none;
+  // }
 }
 
 b {
@@ -176,7 +199,6 @@ blockquote {
 cite {
   color: lighten($base-font-color, 25);
   font-style: italic;
-
   &:before {
     content: "\2014 \00A0";
   }
@@ -186,12 +208,16 @@ cite {
   font-weight: bold;
   font-size: 1.2em;
 }
-.callout-primary { color: $brand-primary; }
-.callout-accent { color: $brand-accent; }
 
+.callout-primary {
+  color: $brand-primary;
+}
+
+.callout-accent {
+  color: $brand-accent;
+}
 
 .details {
   color: $dark-gray;
   font-weight: normal;
 }
-

@@ -1,24 +1,28 @@
-@mixin logo {
-  @include display-font('thin');
-  font-size: 4em;
+// @mixin logo {
+//   @include display-font('thin');
+//   font-size: 4em;
 
-  margin-top: -.25em;
-  padding: 0;
+//   margin-top: -.25em;
+//   padding: 0;
 
-  &, &:hover, &:visited, a, a:hover, a:visited  {
-    color: $base-font-color;
+//   &, &:hover, &:visited, a, a:hover, a:visited  {
+//     color: $base-font-color;
 
-    span {
-      color: $brand-primary;
-    }
-  }
-}
+//     span {
+//       color: $brand-primary;
+//     }
+//   }
+// }
+
+// .logo {
+//   @include logo;
+// }
+
+// .logo-inverted {
+//   @include logo;
+//   color: $white;
+// }
 
 .logo {
-  @include logo;
-}
-
-.logo-inverted {
-  @include logo;
-  color: $white;
+  width: 250px;
 }
